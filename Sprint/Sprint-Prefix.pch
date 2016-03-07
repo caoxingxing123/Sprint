@@ -1,0 +1,21 @@
+//
+// Prefix header for all source files of the 'QQLogin' target in the 'QQLogin' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_4_0
+#define AFNETWORKING_ALLOW_INVALID_SSL_CERTIFICATES
+#warning "This project uses features only available in iOS SDK 4.0 and later."
+#endif
+
+#ifdef __OBJC__ //确保只被objectcive-C语言的文件所引用
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import <SystemConfiguration/SystemConfiguration.h>
+    #import <MobileCoreServices/MobileCoreServices.h>
+    #import "MacroDef.h"
+    #import "Common.h"
+    #import "GlobalDef.h"
+    #import "CacheManager.h"
+#endif
