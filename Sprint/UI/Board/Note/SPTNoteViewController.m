@@ -26,6 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    self.title = @"阶段1";
     [self initData];
     [self initPhases];
 }
@@ -178,6 +179,22 @@ static NSString *collectionHeaderID = @"HeaderIdentify";
                 }
             }
         }
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (![scrollView isKindOfClass:[UICollectionView class]]) {
+        if(decelerate) {
+            int currentPage = floor((scrollView.contentOffset.x - Screen_Width / 2.0) / Screen_Width) + 1;
+            self.title = [NSString stringWithFormat:@"阶段%d",currentPage + 1];
+        }
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    if (![scrollView isKindOfClass:[UICollectionView class]]) {
+        int currentPage = floor((scrollView.contentOffset.x - Screen_Width / 2.0) / Screen_Width) + 1;
+        self.title = [NSString stringWithFormat:@"阶段%d",currentPage + 1];
     }
 }
 
